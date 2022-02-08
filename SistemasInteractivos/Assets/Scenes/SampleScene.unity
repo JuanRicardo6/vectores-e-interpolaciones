@@ -216,75 +216,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &709075889
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 709075891}
-  - component: {fileID: 709075890}
-  m_Layer: 0
-  m_Name: TesteoV
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &709075890
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 709075889}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61df8ce2658842b42a534263bf59cad5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  vector1:
-    x: -5
-    y: 5
-    color: {r: 1, g: 0, b: 0, a: 1}
-  vector2:
-    x: 5
-    y: 5
-    color: {r: 0, g: 1, b: 0.033620358, a: 1}
-  vectorR:
-    x: 0
-    y: 0
-    color: {r: 0, g: 0, b: 0, a: 0}
-  puntoInicio:
-    x: 0
-    y: 0
-    color: {r: 0, g: 0, b: 0, a: 0}
-  vectorNormalizado:
-    x: 0
-    y: 0
-    color: {r: 0, g: 0, b: 0, a: 0}
-  vectorInterpolado:
-    x: 0
-    y: 0
-    color: {r: 0, g: 0, b: 0, a: 0}
-  magnitud: 0
-  rango: 1
---- !u!4 &709075891
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 709075889}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -367,4 +298,68 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1138452482
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1138452484}
+  - component: {fileID: 1138452483}
+  m_Layer: 0
+  m_Name: Testeo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1138452483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1138452482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61df8ce2658842b42a534263bf59cad5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vector1:
+    x: 5
+    y: 5
+  vector2:
+    x: -5
+    y: 5
+  vectorR:
+    x: 0
+    y: 0
+  puntoInicio:
+    x: 0
+    y: 0
+  vectorNormalizado:
+    x: 0
+    y: 0
+  vectorInterpolado:
+    x: 0
+    y: 0
+  magnitud: 0
+  color: {fileID: 11400000, guid: db74e39b3e1d4a24c8c1fc093cca0198, type: 2}
+  rango: 1
+--- !u!4 &1138452484
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1138452482}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
