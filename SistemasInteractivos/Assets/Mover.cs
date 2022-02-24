@@ -7,15 +7,18 @@ public class Mover : MonoBehaviour
     [SerializeField] Vector3 aceleration;
     [SerializeField] Vector3 velocity;
     [SerializeField] Vector3 position;
+    [SerializeField] bool limitarVelocidad;
+    [SerializeField] float limiteVelocidad;
     [Range(0, 1)]
     [SerializeField] float dumping;
     [SerializeField] bool changeAceleration;
     [SerializeField] float limite;
     [SerializeField] float radioObjeto;
     [SerializeField] bool centroG;
-    [SerializeField] Vector3 centroGravitacional;
-    [Range(1,100)]
+    [SerializeField] Transform centroGravitacional;
+    [Range(1, 100)]
     [SerializeField] float fuerzaGravitatoria;
+    [SerializeField] float gravedad;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,7 +34,7 @@ public class Mover : MonoBehaviour
     public void Move()
     {
         //aceleration = -(this.transform.position - centroGravitacional)*fuerzaGravitatoria;
-        aceleration = CentroGravedad(centroG, aceleration, centroGravitacional);
+        aceleration = CentroGravedad(centroG, aceleration, centroGravitacional, gravedad);
         float c = limite - radioObjeto;
         if (position.x >= c)
         {
@@ -63,6 +66,7 @@ public class Mover : MonoBehaviour
         }
 
         velocity += aceleration * Time.deltaTime;
+        velocity = LimitarVelocidad(limitarVelocidad, velocity, limiteVelocidad);
         position += velocity * Time.deltaTime;
         transform.position = position;
     }
@@ -89,15 +93,30 @@ public class Mover : MonoBehaviour
         componente = -(componente - componente * dumping);
         return componente;
     }
-    Vector3 CentroGravedad(bool centroG,Vector3 aceleration,Vector3 centro) {
+    Vector3 CentroGravedad(bool centroG, Vector3 aceleration, Transform centro, float gravedad)
+    {
         if (centroG == true)
         {
-            aceleration= -(this.transform.position - centro) * fuerzaGravitatoria;
+            aceleration = (centro.position - this.transform.position);
+            aceleration = aceleration.normalized * gravedad * fuerzaGravitatoria;
             return aceleration;
         }
         else
         {
             return aceleration;
+        }
+    }
+    private Vector3 LimitarVelocidad(bool limitar, Vector3 velocidad, float limite)
+    {
+
+        if (limitar == true && velocidad.magnitude > limite)
+        {
+            velocidad = velocidad.normalized * limite;
+            return velocidad;
+        }
+        else
+        {
+            return velocidad;
         }
     }
 }
