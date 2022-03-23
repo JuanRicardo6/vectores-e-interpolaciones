@@ -5,28 +5,32 @@ using UnityEngine;
 public class LookAt : MonoBehaviour
 {
     [SerializeField] Vector3 diff, velocity, mousePos, aceleration;
-    [SerializeField] float speed;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
+    [SerializeField] float speed, angle;
+    [SerializeField] bool acelerationON, moveON;
     void Update()
     {
+        if (Input.GetButtonDown("Jump"))
+        {
+            acelerationON = !acelerationON;
+        }
+        if (Input.GetKeyDown("x"))
+        {
+            moveON = !moveON;
+        }
         mousePos = GetWorldMousePosition();
         diff = mousePos - transform.position;
-        float angle=Mathf.Atan2(velocity.y,velocity.x);
-        
+
+        RotateTo(acelerationON);
         //Vector3 tangent = new Vector3(-Mathf.Sin(angle), Mathf.Cos(angle));
         //float tetha= Mathf.Atan2(tangent.y, tangent.x);
 
         transform.rotation = Quaternion.Euler(0f, 0f, angle * Mathf.Rad2Deg);
-        //velocity = diff.normalized*speed;
-        aceleration = diff;
-        Move();
+        if (moveON == true)
+        {
+            Move(acelerationON);
+        }
+
+
     }
     private Vector4 GetWorldMousePosition()
     {
@@ -50,10 +54,38 @@ public class LookAt : MonoBehaviour
         }
         return x;
     }
-    void Move()
+    void Move(bool acelerationON)
     {
-        velocity += aceleration*Time.deltaTime;
-        transform.position += velocity * Time.deltaTime;
+        if (acelerationON == true)
+        {
+            aceleration = diff;
+            velocity += aceleration * Time.deltaTime;
+            transform.position += velocity * Time.deltaTime;
+        }
+        else
+        {
+            velocity = diff.normalized * speed;
+            transform.position += velocity * Time.deltaTime;
+        }
     }
-    
+    void RotateTo(bool acelerationO)
+    {
+        if (acelerationO == true)
+        {
+            if (moveON == true)
+            {
+                angle = Mathf.Atan2(velocity.y, velocity.x);
+            }
+            else
+            {
+                angle = Mathf.Atan2(diff.y, diff.x);
+            }
+
+        }
+        else
+        {
+            angle = Mathf.Atan2(diff.y, diff.x);
+        }
+    }
+
 }
